@@ -1,7 +1,7 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import emailjs from "emailjs-com";
-
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function Home() {
   return (
@@ -14,38 +14,50 @@ function Home() {
 }
 
 function Terrenos() {
-  const terrenos = [
-    { id: 1, nombre: "Terreno 1", m2: 500, info: "Ubicación céntrica." },
-    { id: 2, nombre: "Terreno 2", m2: 750, info: "Ideal para comercio." },
-    { id: 3, nombre: "Terreno 3", m2: 600, info: "Vista panorámica." },
-    { id: 4, nombre: "Terreno 4", m2: 400, info: "Zona residencial." },
-    { id: 5, nombre: "Terreno 5", m2: 800, info: "Cerca de la playa." },
-    { id: 6, nombre: "Terreno 6", m2: 900, info: "Con conexión eléctrica." },
+  const images = [
+    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
+    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
+    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
+    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
   ];
 
-  const placeholderImages = [
-    "https://th.bing.com/th/id/OIP.ucvIDzhtQeBv_UVjLZzcbQHaFj?w=840&h=630&rs=1&pid=ImgDetMain",
-    "https://colinasdemontebello.construccionesr.com/wp-content/uploads/Terrenos-a-la-Venta.jpg",
-    "https://th.bing.com/th/id/R.302f9959bc489adca3194d1f6eee390b?rik=5dixDlxYD6V1AA&pid=ImgRaw&r=0",
-  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
     <section id="terrenos">
-      <div className="terrenos-grid">
-        {terrenos.map((terreno) => (
-          <div key={terreno.id} className="card">
-            <div className="carousel">
-              {placeholderImages.map((src, index) => (
-                <img key={index} src={src} alt={`Imagen ${index + 1} del ${terreno.nombre}`} />
-              ))}
+      <h2>Terrenos disponibles</h2>
+      <p>Todos nuestros terrenos tienen una hectárea de tamaño.</p>
+      <div className="carousel-container">
+        <button className="carousel-button prev" onClick={handlePrev}>
+          &#8249;
+        </button>
+        <div
+          className="carousel"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {images.map((src, index) => (
+            <div className="carousel-item" key={index}>
+              <img src={src} alt={`Terreno ${index + 1}`} />
             </div>
-            <div className="card-content">
-              <h3>{terreno.nombre}</h3>
-              <p>{terreno.m2} m²</p>
-              <p>{terreno.info}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button className="carousel-button next" onClick={handleNext}>
+          &#8250;
+        </button>
       </div>
     </section>
   );
@@ -55,6 +67,7 @@ function Contacto() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -88,44 +101,67 @@ function Contacto() {
 
   return (
     <section id="contacto">
-      <h2>Contáctanos</h2>
-      <p>Déjanos tus datos y nos pondremos en contacto contigo.</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nombre</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+      <div className="contacto-container">
+        <div className="contacto-info">
+          <h2>¿Necesitas ayuda?</h2>
+          <p>Déjanos tus datos y en breve te estaremos contactando</p>
+          <p>Tambien podes contactarnos por estos medios</p>
+          <div className='info-contacto'>
+            <p>Instagram</p>
+            <p>WhatsAppIcon</p>
+          </div>
         </div>
-        <div>
-          <label htmlFor="email">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+        <div className="contacto-form">
+          <h2>Contáctanos</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="name">Nombre Completo</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Correo Electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone">Celular</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+          {success && <p>¡Mensaje enviado con éxito!</p>}
         </div>
-        <div>
-          <label htmlFor="message">Mensaje</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Enviar</button>
-      </form>
-      {success && <p>¡Mensaje enviado con éxito!</p>}
+      </div>
     </section>
   );
 }
@@ -157,7 +193,7 @@ function App() {
   return (
     <div>
       <div className="nav">
-        <h1><a href="#home">Logo</a></h1>
+        <h1><a href="#home">Barrio San Agustín</a></h1>
         <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <ul>
             <li><a href="#terrenos">Terrenos</a></li>
