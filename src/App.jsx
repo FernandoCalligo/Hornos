@@ -1,67 +1,45 @@
 import './App.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import emailjs from "emailjs-com";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { Carousel } from 'antd';
+import { BulbOutlined, FireOutlined, EnvironmentOutlined, AppstoreOutlined } from "@ant-design/icons";
 
 function Home() {
   return (
     <header id="home">
       <h2>¿Estás en búsqueda de un terreno en Hornos?</h2>
       <h3>¡Nosotros lo tenemos!</h3>
-      <a href="#contacto"><button className="btn-hover">¡Contáctanos!</button></a>
+      <a href="#contacto"><button className="bton-hoverrut">¡Contáctanos!</button></a>
     </header>
   );
 }
 
 function Terrenos() {
   const images = [
-    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
-    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
-    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
-    "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzL2QxMWEyNWFjLWZjYWYtNDExZC1hM2MzLTg5ZTMwYzdjZTRhNS83NDIzZTgzZS1lNGNkLTRlMzMtYmFkNC0yY2EzNjY0OTUzN2UuanBnIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
+    "https://fotos.perfil.com/2023/05/23/trim/987/555/procrear-ii-lotes-con-servicios-1573634.jpg",
+    "https://www.argentina.gob.ar/sites/default/files/2017/05/lcsheader.jpeg",
+    "https://media.tycsports.com/files/2023/09/27/623405/terrenos_862x485_wmk.webp"
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+  const ImgCarrousel = {
+    width: "100%", // Ocupa todo el ancho
+    height: "480px", // Altura fija
+    objectFit: "cover", // Recorta la imagen para cubrir el espacio
   };
 
   return (
     <section id="terrenos">
-      <h2>Terrenos disponibles</h2>
-      <p>Todos nuestros terrenos tienen una hectárea de tamaño.</p>
-      <div className="carousel-container">
-        <button className="carousel-button prev" onClick={handlePrev}>
-          &#8249;
-        </button>
-        <div
-          className="carousel"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
-        >
-          {images.map((src, index) => (
-            <div className="carousel-item" key={index}>
-              <img src={src} alt={`Terreno ${index + 1}`} />
-            </div>
-          ))}
-        </div>
-        <button className="carousel-button next" onClick={handleNext}>
-          &#8250;
-        </button>
-      </div>
+      <Carousel autoplay>
+        {images.map((image, index) => (
+          <div key={index}>
+            <img src={image} style={ImgCarrousel} alt={`Imagen ${index + 1}`} />
+          </div>
+        ))}
+      </Carousel>
     </section>
   );
 }
+
 
 function Contacto() {
   const [formData, setFormData] = useState({
@@ -108,7 +86,7 @@ function Contacto() {
           <p>Tambien podes contactarnos por estos medios</p>
           <div className='info-contacto'>
             <p>Instagram</p>
-            <p>WhatsAppIcon</p>
+            <p>Whatsapp</p>
           </div>
         </div>
         <div className="contacto-form">
@@ -169,11 +147,31 @@ function Contacto() {
 function Nosotros() {
   return (
     <section id="nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>Conoce más sobre nuestra empresa y misión.</p>
+      <h2>Infraestructura / Factibles</h2>
+      <div className='factibles'>
+        <div className="feature">
+          <BulbOutlined className="feature-icon" />
+          <p>Red Eléctrica</p>
+        </div>
+        <div className="feature">
+          <FireOutlined className="feature-icon" />
+          <p>Red de Agua</p>
+        </div>
+        <div className="feature">
+          <EnvironmentOutlined className="feature-icon" />
+          <p>Forestación</p>
+        </div>
+        <div className="feature">
+          <AppstoreOutlined className="feature-icon" />
+          <p>Calles Empedradas</p>
+        </div>
+      </div>
+      <div>
+          <p>Video de los terrenos</p>
+      </div>
     </section>
   );
-}
+};
 
 function Ubicacion() {
   return (
@@ -181,6 +179,30 @@ function Ubicacion() {
       <h2>Ubicacion</h2>
     </section>
   );
+}
+
+function Hero() {
+  return (
+    <>
+    <div className="herobody">
+      <section className="hero">
+        <h2>Barrio San Agustín en Gral. Hornos</h2>
+        <p>
+          Presentamos la inaguracion de un nuevo barrio <span className="highlight">con un entorno tranquilo</span>,
+          rodeado de <span className="highlight">naturaleza y paz</span>.
+        </p>
+        <p>
+          <strong>Lotes de 1000 m²</strong>, ubicado en uta 40 a pocos km de la Ruta Nacional 6 Gral. Hornos, Las Heras.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic temporibus quam porro <strong>lorem ipsum</strong> Lorem ipsum dolor sit amet 
+          <strong> Lorem ipsum dolor sit amet</strong>.
+        </p>
+        <p className="final-note">Sin expensas, con escrituración.</p>
+      </section>
+    </div>
+    </>
+  )
 }
 
 function App() {
@@ -210,6 +232,7 @@ function App() {
       </div>
       <main>
         <Home />
+        <Hero />
         <Terrenos />
         <Nosotros />
         <Contacto />
@@ -231,3 +254,4 @@ function App() {
 }
 
 export default App;
+
