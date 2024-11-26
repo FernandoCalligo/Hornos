@@ -192,7 +192,7 @@ function Hero() {
           rodeado de <span className="highlight">naturaleza y paz</span>.
         </p>
         <p>
-          <strong>Lotes de 1000 m²</strong>, ubicado en uta 40 a pocos km de la Ruta Nacional 6 Gral. Hornos, Las Heras.
+          <strong>Lotes de 1000 m²</strong>, ubicado en Ruta Provincial 40 a pocos Km de la Ruta Provincial 6 Gral. Hornos, Las Heras.
         </p>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic temporibus quam porro <strong>lorem ipsum</strong> Lorem ipsum dolor sit amet 
