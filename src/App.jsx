@@ -1,9 +1,11 @@
 import './App.css';
 import { useState } from 'react';
 import emailjs from "emailjs-com";
-import { Carousel } from 'antd';
+import { Carousel, Image  } from 'antd';
 import { BulbOutlined, FireOutlined, EnvironmentOutlined, AppstoreOutlined } from "@ant-design/icons";
-
+import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Button, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 function Home() {
   return (
     <header id="home">
@@ -176,7 +178,31 @@ function Nosotros() {
 function Ubicacion() {
   return (
     <section id="ubicacion">
-      <h2>Ubicacion</h2>
+      <h2>Ubicación</h2>
+      <div className='InfoUbicacion'>
+        <div>
+          <h3>Distancia:</h3>
+          <p>A 7 cuadras de la plaza principal y de la estación del ferrocarril Sarmiento.</p>
+          <p>A 10 cuadras de la Ruta Provincial N°40</p>
+          <p>Frente al casco urbano de Gral. Hornos</p>
+        </div>
+        <div>
+          <h3>Datos catastrales:</h3>
+          <p>Partido 41 (General Las Heras)</p>
+          <p>Circunsripción: 2</p>
+          <p>Sección: C</p>
+        </div>
+      </div>
+      <div className="ImagenesUbicacion">
+  <Image
+    src="/public/1.png"
+    className="responsive-image"
+  />
+  <Image
+    src="/public/2.png"
+    className="responsive-image"
+  />
+</div>
     </section>
   );
 }

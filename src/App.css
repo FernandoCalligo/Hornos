@@ -539,6 +539,119 @@ footer .footer-links a:hover {
     justify-content: start;
     align-items: center;
   }
+}
 
+#ubicacion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  gap: 3rem;
+  padding: 1rem 1rem 3rem 1rem; /* Espaciado para evitar bordes pegados */
+  background-color: var(--primary);
 
+}
+
+#ubicacion h2 {
+  padding: 1rem;
+  font-size: 2.5rem; /* Tamaño ajustado para pantallas pequeñas */
+  width: 100%;
+  text-align: center; /* Centrado en dispositivos más pequeños */
+  color: var(--text);
+}
+
+/* Sección de información responsive */
+.InfoUbicacion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Reducido para pantallas pequeñas */
+  justify-content: center; /* Centrado en móviles */
+  align-items: start;
+  width: 100%;
+  background-color: var(--text);
+}
+
+.InfoUbicacion div {
+  background-color: var(--text);
+  padding: 2rem;
+  border-radius: 1rem;  ; /* Predeterminado para dispositivos pequeños */
+  width: 400px; /* Limita el ancho máximo para mantener proporción */
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.25rem;
+  height: 200px;
+}
+
+.divisor {
+  width: 2px; /* Ancho de la línea */
+  height: 100%; /* Alto de la línea */
+  background-color: var(--primary); /* Color de la línea */
+  margin: 0 auto; /* Centrar si está dentro de un contenedor flex */
+}
+
+.InfoUbicacion p {
+  padding: 0.5rem 0 0 0;
+}
+
+/* Imagenes ajustables */
+.ImagenesUbicacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* Espacio más pequeño en móviles */
+  padding: 1rem; /* Espaciado interno */
+}
+
+.ImagenesUbicacion img {
+  object-fit: cover;
+  width: 100%;
+  max-width: 900px; /* Limita el ancho máximo */
+  border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  #ubicacion h2 {
+    font-size: 2rem;
+  }
+
+  .InfoUbicacion div {
+    padding: 1.5rem; /* Reduce el padding */
+  }
+
+  .ImagenesUbicacion img {
+    max-width: 100%; /* Ocupa todo el ancho disponible */
+  }
+}
+
+/* Media queries para pantallas medianas (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #ubicacion {
+    gap: 2rem; /* Espaciado moderado */
+  }
+
+  .InfoUbicacion {
+    gap: 3rem; /* Más espacio para tablets */
+  }
+
+  .ImagenesUbicacion img {
+    max-width: 250px; /* Ajusta tamaño para tablets */
+  }
+}
+
+/* Media queries para pantallas grandes (desktops) */
+@media (min-width: 1025px) {
+  #ubicacion h2 {
+    font-size: 3rem;
+  }
+
+  .InfoUbicacion {
+    gap: 4rem; /* Más espacio en pantallas grandes */
+  }
+
+  .ImagenesUbicacion img {
+    max-width: 800px; /* Imágenes más grandes */
+  }
 }
