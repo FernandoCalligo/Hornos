@@ -506,12 +506,17 @@ footer .footer-links a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 2rem;
+  flex-wrap: wrap;
 }
 
 .feature {
   text-align: center;
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  align-items: center;
   color: var(--primary); /* Verde oscuro */
 }
 
@@ -521,9 +526,19 @@ footer .footer-links a:hover {
   color: var(--primary); /* Verde oscuro */
 }
 
-.nosotros p {
+.video p {
   margin: 0;
   font-size: 1rem;
   font-weight: bold;
   color: #333;
+}
+
+@media (max-width: 768px) {
+  .factibles {
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+  }
+
+
 }

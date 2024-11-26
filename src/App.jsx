@@ -166,7 +166,7 @@ function Nosotros() {
           <p>Calles Empedradas</p>
         </div>
       </div>
-      <div>
+      <div className='video'>
           <p>Video de los terrenos</p>
       </div>
     </section>
