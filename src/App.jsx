@@ -269,9 +269,14 @@ function Hero() {
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleWebClick = () => {
     setShowIntro(false); // Cambiar a la página principal
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -281,15 +286,30 @@ function App() {
       ) : (
         <>
           <div className="nav">
-            <h1><a href="#home">Barrio San Agustín</a></h1>
-            <nav className="nav-links">
+            <h1>
+              <a href="#home">Barrio San Agustín</a>
+            </h1>
+            <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <ul>
-                <li><a href="#terrenos">Terrenos</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
+                <li>
+                  <a href="#terrenos">Terrenos</a>
+                </li>
+                <li>
+                  <a href="#nosotros">Nosotros</a>
+                </li>
+                <li>
+                  <a href="#contacto">Contacto</a>
+                </li>
+                <li>
+                  <a href="#ubicacion">Ubicación</a>
+                </li>
               </ul>
             </nav>
+            <button className="hamburger" onClick={toggleMenu}>
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </button>
           </div>
           <main>
             <Home />
@@ -302,11 +322,20 @@ function App() {
           <footer>
             <div className="footer-content">
               <h4>Información de Contacto</h4>
-              <p><strong>Teléfono:</strong> (123) 456-7890</p>
-              <p><strong>Email:</strong> contacto@hornos.com</p>
-              <p><strong>Dirección:</strong> Calle Principal 123, Hornos, Ciudad</p>
+              <p>
+                <strong>Teléfono:</strong> (123) 456-7890
+              </p>
+              <p>
+                <strong>Email:</strong> contacto@hornos.com
+              </p>
+              <p>
+                <strong>Dirección:</strong> Calle Principal 123, Hornos, Ciudad
+              </p>
               <div className="footer-links">
-                <a href="#home">Inicio</a> | <a href="#terrenos">Terrenos</a> | <a href="#nosotros">Nosotros</a> | <a href="#contacto">Contacto</a> | <a href="#ubicacion">Ubicación</a>
+                <a href="#home">Inicio</a> | <a href="#terrenos">Terrenos</a> |{' '}
+                <a href="#nosotros">Nosotros</a> |{' '}
+                <a href="#contacto">Contacto</a> |{' '}
+                <a href="#ubicacion">Ubicación</a>
               </div>
             </div>
           </footer>
@@ -315,6 +344,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 
