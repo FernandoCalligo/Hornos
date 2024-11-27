@@ -43,6 +43,7 @@
 .nav h1 {
   margin: 0;
   font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 .nav ul {
@@ -653,5 +654,130 @@ footer .footer-links a:hover {
 
   .ImagenesUbicacion img {
     max-width: 800px; /* Imágenes más grandes */
+  }
+}
+
+/* Pantalla de introducción */
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--primary); /* Fondo verde oscuro */
+  color: #ffffff;
+  text-align: center;
+  padding: 20px; /* Añadido padding para que el contenido no quede pegado en dispositivos pequeños */
+}
+
+.intro-logo .logo-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  color: #364532;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.intro-title {
+  font-size: 2.5rem; /* Tamaño base */
+  margin-bottom: 12px;
+}
+
+.intro-subtitle {
+  font-size: 1rem;
+  color: #bfbfbf;
+  margin-bottom: 30px;
+}
+
+.icon-links {
+  padding: 1rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaciado entre íconos */
+}
+
+.intro-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espaciado entre botones */
+}
+
+.intro-buttons button {
+  margin: 10px;
+  padding: 1rem 3rem; /* Ajustado para que no desborde en pantallas pequeñas */
+  background-color: #ffffff;
+  color: #364532;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.intro-buttons button:hover {
+  background-color: #bfbfbf;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Pantallas grandes (desktops) */
+@media (min-width: 1024px) {
+  .intro-title {
+    font-size: 3rem; /* Título más grande en pantallas grandes */
+  }
+
+  .intro-buttons button {
+    font-size: 1.25rem;
+    padding: 1rem 12rem; /* Botones más grandes */
+  }
+
+  .icon-links {
+    gap: 30px; /* Más espacio entre íconos en pantallas grandes */
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .intro-title {
+    font-size: 2.2rem;
+  }
+
+  .intro-buttons button {
+    font-size: 1.1rem;
+    padding: 12px 80px; /* Ajuste de tamaño de botones para tablets */
+  }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .intro-subtitle {
+    font-size: 1rem;
+  }
+
+  .intro-buttons button {
+    font-size: 1.25rem;
+    padding: 10px 20px; /* Botones más compactos */
+  }
+
+  .icon-links {
+    gap: 15px; /* Menor espacio entre íconos */
+  }
+
+  .intro-logo .logo-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 30px; /* Tamaño reducido del logo en móviles */
   }
 }

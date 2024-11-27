@@ -1,11 +1,47 @@
 import './App.css';
 import { useState } from 'react';
 import emailjs from "emailjs-com";
-import { Carousel, Image  } from 'antd';
+import { Carousel, Image } from 'antd';
 import { BulbOutlined, FireOutlined, EnvironmentOutlined, AppstoreOutlined } from "@ant-design/icons";
-import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Button, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { InstagramOutlined, WhatsAppOutlined, FileTextOutlined, GlobalOutlined } from "@ant-design/icons";
+
+function IntroScreen({ onWebClick }) {
+  return (
+    <div className="intro-container">
+      <div className="intro-logo">
+        <div className="logo-circle">B</div>
+      </div>
+      <h1 className="intro-title">BARRIO SAN AGUSTÍN</h1>
+      <p className="intro-subtitle">
+        Un nuevo barrio con alma de campo en Gral. Hornos.
+        <div className="icon-links">
+          <a href="https://www.instagram.com" target='_blank'><InstagramOutlined style={{ fontSize: "32px", margin: "0 10px", color: "#fff" }} /></a>
+          <a href="https://wa.me" target='_blank'><WhatsAppOutlined style={{ fontSize: "32px", margin: "0 10px", color: "#fff" }} /></a>
+        </div>
+      </p>
+      <div className="intro-buttons">
+        <button onClick={() => window.open('https://wa.me', '_blank')}>
+          <WhatsAppOutlined style={{ marginRight: "8px" }} />
+          Whatsapp
+        </button>
+        <button onClick={() => window.open('https://www.instagram.com', '_blank')}>
+          <InstagramOutlined style={{ marginRight: "8px" }} />
+          Instagram
+        </button>
+        <button onClick={() => window.open('https://www.google.com', '_blank')}>
+          <FileTextOutlined style={{ marginRight: "8px" }} />
+          Presentación
+        </button>
+        <button onClick={onWebClick}>
+          <GlobalOutlined style={{ marginRight: "8px" }} />
+          Web
+        </button>
+      </div>
+    </div>
+  );
+}
 function Home() {
   return (
     <header id="home">
@@ -212,7 +248,7 @@ function Hero() {
     <>
     <div className="herobody">
       <section className="hero">
-        <h2>Barrio San Agustín en Gral. Hornos</h2>
+        <h2>BARRIO SAN AGUSTÍN en Gral. Hornos</h2>
         <p>
           Presentamos la inaguracion de un nuevo barrio <span className="highlight">con un entorno tranquilo</span>,
           rodeado de <span className="highlight">naturaleza y paz</span>.
@@ -232,49 +268,50 @@ function Hero() {
 }
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleWebClick = () => {
+    setShowIntro(false); // Cambiar a la página principal
   };
 
   return (
     <div>
-      <div className="nav">
-        <h1><a href="#home">Barrio San Agustín</a></h1>
-        <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <ul>
-            <li><a href="#terrenos">Terrenos</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="#ubicacion">Ubicación</a></li>
-          </ul>
-        </nav>
-        <button className="hamburger" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-      </div>
-      <main>
-        <Home />
-        <Hero />
-        <Terrenos />
-        <Nosotros />
-        <Contacto />
-        <Ubicacion />
-      </main>
-      <footer>
-        <div className="footer-content">
-          <h4>Información de Contacto</h4>
-          <p><strong>Teléfono:</strong> (123) 456-7890</p>
-          <p><strong>Email:</strong> contacto@hornos.com</p>
-          <p><strong>Dirección:</strong> Calle Principal 123, Hornos, Ciudad</p>
-          <div className="footer-links">
-            <a href="#home">Inicio</a> | <a href="#terrenos">Terrenos</a> | <a href="#nosotros">Nosotros</a> | <a href="#contacto">Contacto</a> | <a href="#ubicacion">Ubicación</a>
+      {showIntro ? (
+        <IntroScreen onWebClick={handleWebClick} />
+      ) : (
+        <>
+          <div className="nav">
+            <h1><a href="#home">Barrio San Agustín</a></h1>
+            <nav className="nav-links">
+              <ul>
+                <li><a href="#terrenos">Terrenos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+              </ul>
+            </nav>
           </div>
-        </div>
-      </footer>
+          <main>
+            <Home />
+            <Hero />
+            <Terrenos />
+            <Nosotros />
+            <Contacto />
+            <Ubicacion />
+          </main>
+          <footer>
+            <div className="footer-content">
+              <h4>Información de Contacto</h4>
+              <p><strong>Teléfono:</strong> (123) 456-7890</p>
+              <p><strong>Email:</strong> contacto@hornos.com</p>
+              <p><strong>Dirección:</strong> Calle Principal 123, Hornos, Ciudad</p>
+              <div className="footer-links">
+                <a href="#home">Inicio</a> | <a href="#terrenos">Terrenos</a> | <a href="#nosotros">Nosotros</a> | <a href="#contacto">Contacto</a> | <a href="#ubicacion">Ubicación</a>
+              </div>
+            </div>
+          </footer>
+        </>
+      )}
     </div>
   );
 }
