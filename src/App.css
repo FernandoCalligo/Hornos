@@ -8,6 +8,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: "DM Serif Text";
 }
 :root {
   --primary: #1b4332;
@@ -87,38 +88,6 @@
 
 .nav-links ul {
   flex-direction: column;
-}
-
-header {
-  font-size: 2rem;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("./assets/560662-forest-trees-foliage-nature.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: -1; /* Asegúrate de que esté detrás de otros elementos */
-  filter: blur(3px) brightness(0.7);
-}
-
-header h2, header h3 {
-  color: var(--text);
-  margin: 0;
-  z-index: 1;
 }
 
 section {
@@ -374,6 +343,26 @@ footer .footer-links a:hover {
   color: red;
 }
 
+.info-contacto button {
+  margin: 10px;
+  padding: 1rem 3rem; /* Ajustado para que no desborde en pantallas pequeñas */
+  background-color: #ffffff;
+  color: var(--primary);
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-contacto {
+  flex-wrap: wrap;
+}
+
+.info-contacto button:hover {
+  background-color: #bfbfbf;
+}
+
 @media (max-width: 768px) {
   .contacto-container {
     flex-direction: column;
@@ -480,12 +469,7 @@ footer .footer-links a:hover {
 
 .hero strong {
   font-weight: bold;
-  color: #333;
-}
-
-.hero .highlight {
-  font-weight: bold;
-  color: #555;
+  color: #000000;
 }
 
 .hero .final-note {
@@ -550,8 +534,6 @@ footer .footer-links a:hover {
   color: var(--text);
   gap: 3rem;
   padding: 1rem 1rem 3rem 1rem; /* Espaciado para evitar bordes pegados */
-  background-color: var(--primary);
-
 }
 
 #ubicacion h2 {
@@ -559,7 +541,7 @@ footer .footer-links a:hover {
   font-size: 2.5rem; /* Tamaño ajustado para pantallas pequeñas */
   width: 100%;
   text-align: center; /* Centrado en dispositivos más pequeños */
-  color: var(--text);
+  color: var(--primary);
 }
 
 /* Sección de información responsive */
@@ -603,6 +585,8 @@ footer .footer-links a:hover {
   align-items: center;
   gap: 1rem; /* Espacio más pequeño en móviles */
   padding: 1rem; /* Espaciado interno */
+  background-color: var(--primary);
+  width: 100%;
 }
 
 .ImagenesUbicacion img {
@@ -779,5 +763,56 @@ footer .footer-links a:hover {
     width: 60px;
     height: 60px;
     font-size: 30px; /* Tamaño reducido del logo en móviles */
+  }
+}
+
+/* Slide */
+
+
+.slide {
+  height: 80vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.text {
+  position: relative;
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .slide {
+    max-height: 60vh;
+  }
+  .text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    max-height: 50vh;
+  }
+  .text {
+    font-size: 1.5rem;
   }
 }

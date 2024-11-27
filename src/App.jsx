@@ -6,6 +6,7 @@ import { BulbOutlined, FireOutlined, EnvironmentOutlined, AppstoreOutlined } fro
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { InstagramOutlined, WhatsAppOutlined, FileTextOutlined, GlobalOutlined } from "@ant-design/icons";
+import zIndex from '@mui/material/styles/zIndex';
 
 function IntroScreen({ onWebClick }) {
   return (
@@ -45,9 +46,35 @@ function IntroScreen({ onWebClick }) {
 function Home() {
   return (
     <header id="home">
-      <h2>¿Estás en búsqueda de un terreno en Hornos?</h2>
-      <h3>¡Nosotros lo tenemos!</h3>
-      <a href="#contacto"><button className="bton-hoverrut">¡Contáctanos!</button></a>
+      <Carousel autoplay autoplaySpeed={3000} dots={false}>
+        <div>
+          <div className="slide" style={{backgroundImage: 'url(Hero1.jpeg)'}} >
+            <div className='overlay'></div>
+            <h1 className='text'>
+              ¿Estás en búsqueda de tu terreno soñado? <br />
+              Nosotros lo tenemos.
+            </h1>
+          </div>
+        </div>
+        <div>
+          <div className="slide" style={{backgroundImage: 'url(Hero2.jpeg)'}} >
+            <div className='overlay'></div>
+            <h1 className='text'>TRANQUILIDAD</h1>
+          </div>
+        </div>
+        <div>
+          <div className="slide" style={{backgroundImage: 'url(Hero5.jpeg)'}}>
+            <div className='overlay'></div>
+            <h1 className='text'>NATURALEZA</h1>
+          </div>
+        </div>
+        <div>
+          <div className="slide" style={{backgroundImage: 'url(Hero4.jpeg)'}}>
+            <div className='overlay'></div>
+            <h1 className='text'>SEGURIDAD</h1>
+          </div>
+        </div>
+      </Carousel>
     </header>
   );
 }
@@ -123,8 +150,14 @@ function Contacto() {
           <p>Déjanos tus datos y en breve te estaremos contactando</p>
           <p>Tambien podes contactarnos por estos medios</p>
           <div className='info-contacto'>
-            <p>Instagram</p>
-            <p>Whatsapp</p>
+              <button onClick={() => window.open('https://wa.me', '_blank')}>
+              <WhatsAppOutlined style={{ marginRight: "8px", color:"#1b4332" }} />
+              Whatsapp
+            </button>
+            <button onClick={() => window.open('https://www.instagram.com', '_blank')}>
+              <InstagramOutlined style={{ marginRight: "8px", color:"#1b4332" }} />
+              Instagram
+            </button>
           </div>
         </div>
         <div className="contacto-form">
@@ -248,19 +281,18 @@ function Hero() {
     <>
     <div className="herobody">
       <section className="hero">
-        <h2>BARRIO SAN AGUSTÍN en Gral. Hornos</h2>
+        <h2>CHACRAS SAN AGUSTÍN</h2>
         <p>
-          Presentamos la inaguracion de un nuevo barrio <span className="highlight">con un entorno tranquilo</span>,
-          rodeado de <span className="highlight">naturaleza y paz</span>.
+          Presentamos la inauguración de un barrio de chacras, este nuevo amanzanamiento en zona urbana, con un entorno rodeado de <strong>naturaleza y paz.</strong>
         </p>
         <p>
-          <strong>Lotes de 1000 m²</strong>, ubicado en Ruta Provincial 40 a pocos Km de la Ruta Provincial 6 Gral. Hornos, Las Heras.
+          Ubicado en la Localidad de General Hornos y a solo 10 cuadras de la Ruta Provincial N°40
         </p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic temporibus quam porro <strong>lorem ipsum</strong> Lorem ipsum dolor sit amet 
-          <strong> Lorem ipsum dolor sit amet</strong>.
+          Las parcelas que van de <strong>7.500 a 10.000 m2</strong> forman una zona exclusiva para cumplir tu sueño de vivir en un lugar tranquilo, seguro y a pocos metros de la ciudad
         </p>
-        <p className="final-note">Sin expensas, con escrituración.</p>
+        <p className="final-note">Contactanos para mayor información</p>
+        <a href="#contacto"><button className="bton-hoverrut">¡Contáctanos!</button></a>
       </section>
     </div>
     </>
@@ -287,7 +319,7 @@ function App() {
         <>
           <div className="nav">
             <h1>
-              <a href="#home">Barrio San Agustín</a>
+              <a href="#home">San Agustín</a>
             </h1>
             <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <ul>
