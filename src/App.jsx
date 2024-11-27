@@ -195,11 +195,11 @@ function Ubicacion() {
       </div>
       <div className="ImagenesUbicacion">
   <Image
-    src="/public/1.png"
+    src="public\1.png"
     className="responsive-image"
   />
   <Image
-    src="/public/2.png"
+    src="public/2.png"
     className="responsive-image"
   />
 </div>

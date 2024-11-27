@@ -580,7 +580,7 @@ footer .footer-links a:hover {
   text-align: center;
   color: var(--primary);
   font-size: 1.25rem;
-  height: 200px;
+  height: fit-content;;
 }
 
 .divisor {
