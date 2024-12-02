@@ -2,17 +2,13 @@ import './App.css';
 import { useState } from 'react';
 import emailjs from "emailjs-com";
 import { Carousel, Image } from 'antd';
-import { BulbOutlined, FireOutlined, EnvironmentOutlined, AppstoreOutlined } from "@ant-design/icons";
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
 import { InstagramOutlined, WhatsAppOutlined, FileTextOutlined, GlobalOutlined } from "@ant-design/icons";
-import zIndex from '@mui/material/styles/zIndex';
 
 function IntroScreen({ onWebClick }) {
   return (
     <div className="intro-container">
       <div className="intro-logo">
-        <div className="logo-circle">B</div>
+        <div className="logo-circle">SA</div>
       </div>
       <h1 className="intro-title">BARRIO SAN AGUSTÍN</h1>
       <p className="intro-subtitle">
@@ -57,19 +53,19 @@ function Home() {
           </div>
         </div>
         <div>
-          <div className="slide" style={{backgroundImage: 'url(Hero2.jpeg)'}} >
+          <div className="slide" style={{backgroundImage: 'url(Hero1.jpeg)'}} >
             <div className='overlay'></div>
             <h1 className='text'>TRANQUILIDAD</h1>
           </div>
         </div>
         <div>
-          <div className="slide" style={{backgroundImage: 'url(Hero5.jpeg)'}}>
+          <div className="slide" style={{backgroundImage: 'url(Hero2.jpg)'}}>
             <div className='overlay'></div>
             <h1 className='text'>NATURALEZA</h1>
           </div>
         </div>
         <div>
-          <div className="slide" style={{backgroundImage: 'url(Hero4.jpeg)'}}>
+          <div className="slide" style={{backgroundImage: 'url(Hero6.jpg)'}}>
             <div className='overlay'></div>
             <h1 className='text'>SEGURIDAD</h1>
           </div>
@@ -218,25 +214,7 @@ function Contacto() {
 function Nosotros() {
   return (
     <section id="nosotros">
-      <h2>Infraestructura / Factibles</h2>
-      <div className='factibles'>
-        <div className="feature">
-          <BulbOutlined className="feature-icon" />
-          <p>Red Eléctrica</p>
-        </div>
-        <div className="feature">
-          <FireOutlined className="feature-icon" />
-          <p>Red de Agua</p>
-        </div>
-        <div className="feature">
-          <EnvironmentOutlined className="feature-icon" />
-          <p>Forestación</p>
-        </div>
-        <div className="feature">
-          <AppstoreOutlined className="feature-icon" />
-          <p>Calles Empedradas</p>
-        </div>
-      </div>
+      
       <div className='video'>
           <p>Video de los terrenos</p>
       </div>
